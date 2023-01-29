@@ -1,4 +1,5 @@
 import Reparation from "../models/reparation.js";
+import Cout from "../models/cout.js";
 import mongoose from "mongoose";
 
 export const getReparation = async (req, res) => {
@@ -69,12 +70,16 @@ export const updateReparation = async (req,res) => {
     const { id } = req.params;
     if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No post with this id');
 
+    var query = {"idReparation":id};
+    //console.log(id);
+    const cout = await Cout.find(query);
+
     const reparation = await Reparation.findById(id);
     if(reparation.bonSortie===true) return res.status(400).send(' Le bon de sortie de la voiture a  déja été validée')
+    if(cout[0].resteAPayer!==0) return res.status(400).send(' le paiement de la reparation n est pas complete. ');
         
     reparation.bonSortie = true ;
     
-
     const updatePost = await Reparation.findByIdAndUpdate(id,reparation, { new: true});
     
     res.json(updatePost);

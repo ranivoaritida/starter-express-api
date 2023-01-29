@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 
 const coutSchema = mongoose.Schema ({
     idReparation:String,
-    dateReception:Date,
     piece: [{
         nom: String,
         cout: Number,
