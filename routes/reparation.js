@@ -6,12 +6,12 @@ import auth from '../middleware/auth.js';
 const router = express.Router();
 
 //localhost:4000/reparation
-router.get('/',getReparation);
-router.get('/count',getCount); //nbr total de reparation
-router.get('/notValidate',getReparationAValider); // liste des voitures pas encore valide
-router.get('/:id',getReparationById);
-router.post('/',createReparation);
-router.patch('/:id', updateReparation);
-router.patch('/:id/valider',valideBonSortie);
+router.get('/',auth,getReparation);
+router.get('/count',auth,getCount); //nbr total de reparation
+router.get('/notValidate',auth,getReparationAValider); // liste des voitures pas encore valide
+router.get('/:id',auth,getReparationById);
+router.post('/',auth,createReparation);
+router.patch('/:id',auth, updateReparation);
+router.patch('/:id/valider',auth,valideBonSortie);
 
 export default router;

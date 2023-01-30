@@ -8,11 +8,11 @@ const router = express.Router();
 //localhost:4000/coutxx
 
 
-router.get('/',getCout);    //getAllCout
-router.get('/test',getCoutTotalPaye);
-router.get('/:id',getCoutById);
-router.post('/',createCout); 
-router.patch('/:id/avance',insertAvance); //inserer une avance en donnant id de reparation
-router.patch('/:id/validation',validationAvance); // validation d'une avance en donnant id de l'avance en question
+router.get('/',auth,getCout);    //getAllCout
+router.get('/test',auth,getCoutTotalPaye);
+router.get('/:id',auth,getCoutById);
+router.post('/',auth,createCout); 
+router.patch('/:id/avance',auth,insertAvance); //inserer une avance en donnant id de reparation
+router.patch('/:id/validation',auth,validationAvance); // validation d'une avance en donnant id de l'avance en question
 
 export default router;

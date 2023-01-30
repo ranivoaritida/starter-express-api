@@ -82,6 +82,6 @@ export const updateReparation = async (req,res) => {
     
     const updatePost = await Reparation.findByIdAndUpdate(id,reparation, { new: true});
     
-    res.json(updatePost);
+    res.json(updatePost); 
 
  }

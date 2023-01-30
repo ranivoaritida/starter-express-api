@@ -11,6 +11,6 @@ router.get('/',auth,getVoiture);
 router.get('/count',auth,getCount)//totale de voiture
 router.get('/:id',auth,getVoitureById);
 router.post('/',auth,createVoiture);
-router.patch('/:id',updateVoiture);
+router.patch('/:id',auth,updateVoiture);
 
 export default router;
