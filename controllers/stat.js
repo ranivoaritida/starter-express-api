@@ -16,7 +16,7 @@ export const getCoutTotalPayeParJour = async (req, res) => {
         },{$match: { "avance.validation": true } },
             {
             $group: {
-                _id: { day :{ $dayOfYear: "$avance.date" } , month: { $month: "$avance.date"}, year: { $year:"$avance.date"}},
+                _id: { day :{ $dayOfMonth: "$avance.date" } , month: { $month: "$avance.date"}, year: { $year:"$avance.date"}},
                 coutTotalPaye: { $sum :"$avance.montant"} ,
                 count:{ $sum: 1 }
             }
