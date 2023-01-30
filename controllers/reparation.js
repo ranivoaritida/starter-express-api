@@ -24,6 +24,16 @@ export const getReparationAValider = async (req, res) => {
     }
 }
 
+export const getReparationValider = async (req, res) => {
+    try {
+        var query = { $or: [{ "bonSortie": true}]};
+        const reparation = await Reparation.find(query);
+        res.status(200).json(reparation);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+}
+
 export const getReparationById = async (req, res) => {
     const { id } = req.params;
     try {

@@ -5,7 +5,7 @@ import auth from '../middleware/auth.js';
 
 const router = express.Router();
 
-//localhost:4000/coutxx
+//localhost:4000/stat
 
 
 router.get('/jour',getCoutTotalPayeParJour);

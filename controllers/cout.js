@@ -64,27 +64,22 @@ const coutTotalPiece = async (idReparation) => {
     try {
         const query = " sum(piece.cout)";
         //{ month : { $month : "dateReception" } ,year: { $year: "$dateReception" }}
-        const reparation = await Reparation.aggregate([{
+        const cout = await Cout.aggregate([{
             $unwind: {
-                path: "$aFaire",
+                path: "$avance",
                 preserveNullAndEmptyArrays: true
             }
-        },{$match: { "aFaire.dureeExact": { 
-
-                        $exists: true, 
-                        $ne: null,
-                        $ne:0 }} },
-
+        },{$match: { "avance.validation": true } },
             {
             $group: {
-                _id: "",
-                coutTotalPaye: { $sum :"$aFaire.dureeExact"} ,
+                _id: null,
+                coutTotalPaye: { $sum :"$avance.montant"} ,
                 count:{ $sum: 1 }
             }
             }
         ]);
 
-        res.status(200).json(reparation);
+        res.status(200).json(cout);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }

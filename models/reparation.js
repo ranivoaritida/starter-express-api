@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const reparationSchema = mongoose.Schema ({
     idVoiture:String,
+    voiture:String,
     dateReception:Date,
     aFaire: [{
         description: String,

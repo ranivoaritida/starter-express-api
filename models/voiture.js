@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const voitureSchema = mongoose.Schema ({
     idProprietaire:String,
+    nomProprio:String,
     matricule: String,
     dateDepot:Date,
     dateRecuperation:Date,

@@ -97,8 +97,10 @@ export const getReparationMoyenne = async (req, res) => {
             },
             { $project: { _id: 0 } }
         ]);
+        let resp=reparation[0];
+        resp=resp.nbrTotalHeure/resp.nbrReparation;
 
-        res.status(200).json(reparation[0]);
+        res.status(200).json(resp);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }

@@ -9,7 +9,7 @@ const router = express.Router();
 
 
 router.get('/',auth,getCout);    //getAllCout
-router.get('/test',auth,getCoutTotalPaye);
+router.get('/totalPaye',auth,getCoutTotalPaye);
 router.get('/:id',auth,getCoutById);
 router.post('/',auth,createCout); 
 router.patch('/:id/avance',auth,insertAvance); //inserer une avance en donnant id de reparation
